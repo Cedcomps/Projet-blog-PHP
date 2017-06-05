@@ -3,9 +3,12 @@
 // Home page
 $app->get('/', function () use ($app) {
     $articles = $app['dao.article']->findAll();
+    return $app['twig']->render('index.html.twig', array('articles' => $articles));
+})->bind('home');
 
-    ob_start();             // start buffering HTML output
-    require '../views/view.php';
-    $view = ob_get_clean(); // assign HTML output to $view
-    return $view;
-});
+// Article details with comments
+$app->get('/article/{id}', function ($id) use ($app) {
+    $article = $app['dao.article']->find($id);
+    $comments = $app['dao.comment']->findAllByArticle($id);
+    return $app['twig']->render('article.html.twig', array('article' => $article, 'comments' => $comments));
+})->bind('article');
