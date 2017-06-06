@@ -50,6 +50,7 @@ $app->register(new Silex\Provider\MonologServiceProvider(), array(
     'monolog.name' => 'MicroCMS',
     'monolog.level' => $app['monolog.level']
 ));
+$app->register(new Silex\Provider\ValidatorServiceProvider());
 
 // Register services
 $app['dao.article'] = function ($app) {
