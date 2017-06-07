@@ -24,6 +24,7 @@ class CommentType extends AbstractType
                     'label'           => 'Your webSite',
                     'required'        => false,
                     'constraints'     => new Assert\Url(),
+                    'invalid_message' => 'Cette URL n\'est pas valide.',
                 ])
                 ->add('content', TextareaType::class,[
                     'label'       => 'Your comment',

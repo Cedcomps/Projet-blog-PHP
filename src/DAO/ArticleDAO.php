@@ -25,23 +25,9 @@ class ArticleDAO extends DAO
     }
 
     /**
-     * Creates an Article object based on a DB row.
-     *
-     * @param array $row The DB row containing Article data.
-     * @return \projet4\Domain\Article
-     */
-    protected function buildDomainObject(array $row) {
-        $article = new Article();
-        $article->setId($row['art_id']);
-        $article->setTitle($row['art_title']);
-        $article->setContent($row['art_content']);
-        return $article;
-    }
-
-    /**
      * Returns an article matching the supplied id.
      *
-     * @param integer $id
+     * @param integer $id The article id.
      *
      * @return \projet4\Domain\Article|throws an exception if no matching article is found
      */
@@ -49,11 +35,13 @@ class ArticleDAO extends DAO
         $sql = "select * from t_article where art_id=?";
         $row = $this->getDb()->fetchAssoc($sql, array($id));
 
-        if ($row)
+        if ($row) {
             return $this->buildDomainObject($row);
-        else
+        } else {
             throw new \Exception("No article matching id " . $id);
+        }
     }
+
     /**
      * Saves an article into the database.
      *
@@ -87,4 +75,18 @@ class ArticleDAO extends DAO
         $this->getDb()->delete('t_article', array('art_id' => $id));
     }
 
+    /**
+     * Creates an Article object based on a DB row.
+     *
+     * @param array $row The DB row containing Article data.
+     * @return \projet4\Domain\Article
+     */
+
+    protected function buildDomainObject(array $row) {
+        $article = new Article();
+        $article->setId($row['art_id']);
+        $article->setTitle($row['art_title']);
+        $article->setContent($row['art_content']);
+        return $article;
+    }
 }

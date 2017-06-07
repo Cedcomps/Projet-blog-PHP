@@ -1,6 +1,6 @@
 <?php
 
-namespace projet4\Tests;
+namespace projet4\Test;
 
 require_once __DIR__.'/../../vendor/autoload.php';
 

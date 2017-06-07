@@ -14,7 +14,7 @@
     bootstrap                   = "vendor/autoload.php">
 
     <testsuites>
-        <testsuite name="MicroCMS">
+        <testsuite name="projet4">
             <directory>tests</directory>
         </testsuite>
     </testsuites>

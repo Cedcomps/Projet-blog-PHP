@@ -78,19 +78,16 @@ class User implements UserInterface
     /**
      * @inheritDoc
      */
-    public function getSalt()
-    {
+    public function getSalt() {
         return $this->salt;
     }
 
-    public function setSalt($salt)
-    {
+    public function setSalt($salt) {
         $this->salt = $salt;
         return $this;
     }
 
-    public function getRole()
-    {
+    public function getRole() {
         return $this->role;
     }
 
