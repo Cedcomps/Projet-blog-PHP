@@ -22,8 +22,11 @@ class ArticleType extends AbstractType
                         ))),
                 ))
                 ->add('content', TextareaType::class, array(
-                    'required'    => true,
+                    'required'    => false,
                     'constraints' => new Assert\NotBlank(),
+                    'attr' => array(
+                        'class' => 'tinymce'
+                    )
         ));
     }
 

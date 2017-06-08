@@ -21,13 +21,13 @@ class CommentType extends AbstractType
                     'constraints'     => new Assert\Email(['checkMX' => true]),
                 ])
                 ->add('website', UrlType::class, [
-                    'label'           => 'Your webSite',
+                    'label'           => 'Votre site web',
                     'required'        => false,
                     'constraints'     => new Assert\Url(),
                     'invalid_message' => 'Cette URL n\'est pas valide.',
                 ])
                 ->add('content', TextareaType::class,[
-                    'label'       => 'Your comment',
+                    'label'       => 'Votre commentaire',
                     'required'    => true,
                     'constraints' => new Assert\NotBlank(),
         ]);
