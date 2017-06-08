@@ -4,9 +4,9 @@ namespace projet4\Controller;
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
-use projet4\Domain\Article;
+use projet4\Domain\Episode;
 use projet4\Domain\User;
-use projet4\Form\Type\ArticleType;
+use projet4\Form\Type\EpisodeType;
 use projet4\Form\Type\CommentType;
 use projet4\Form\Type\UserType;
 
@@ -18,66 +18,66 @@ class AdminController {
      * @param Application $app Silex application
      */
     public function indexAction(Application $app) {
-        $articles = $app['dao.article']->findAll();
+        $episodes = $app['dao.episode']->findAll();
         $comments = $app['dao.comment']->findAll();
         $users = $app['dao.user']->findAll();
         return $app['twig']->render('admin.html.twig', array(
-            'articles' => $articles,
+            'episodes' => $episodes,
             'comments' => $comments,
             'users' => $users));
     }
 
     /**
-     * Add article controller.
+     * Add episode controller.
      *
      * @param Request $request Incoming request
      * @param Application $app Silex application
      */
-    public function addArticleAction(Request $request, Application $app) {
-        $article = new Article();
-        $articleForm = $app['form.factory']->create(ArticleType::class, $article);
-        $articleForm->handleRequest($request);
-        if ($articleForm->isSubmitted() && $articleForm->isValid()) {
-            $app['dao.article']->save($article);
-            $app['session']->getFlashBag()->add('success', 'The article was successfully created.');
+    public function addEpisodeAction(Request $request, Application $app) {
+        $episode = new Episode();
+        $episodeForm = $app['form.factory']->create(EpisodeType::class, $episode);
+        $episodeForm->handleRequest($request);
+        if ($episodeForm->isSubmitted() && $episodeForm->isValid()) {
+            $app['dao.episode']->save($episode);
+            $app['session']->getFlashBag()->add('success', 'The episode was successfully created.');
         }
-        return $app['twig']->render('article_form.html.twig', array(
-            'title' => 'New article',
-            'articleForm' => $articleForm->createView()));
+        return $app['twig']->render('episode_form.html.twig', array(
+            'title' => 'New episode',
+            'episodeForm' => $episodeForm->createView()));
     }
 
     /**
-     * Edit article controller.
+     * Edit episode controller.
      *
-     * @param integer $id Article id
+     * @param integer $id Episode id
      * @param Request $request Incoming request
      * @param Application $app Silex application
      */
-    public function editArticleAction($id, Request $request, Application $app) {
-        $article = $app['dao.article']->find($id);
-        $articleForm = $app['form.factory']->create(ArticleType::class, $article);
-        $articleForm->handleRequest($request);
-        if ($articleForm->isSubmitted() && $articleForm->isValid()) {
-            $app['dao.article']->save($article);
-            $app['session']->getFlashBag()->add('success', 'The article was successfully updated.');
+    public function editEpisodeAction($id, Request $request, Application $app) {
+        $episode = $app['dao.episode']->find($id);
+        $episodeForm = $app['form.factory']->create(EpisodeType::class, $episode);
+        $episodeForm->handleRequest($request);
+        if ($episodeForm->isSubmitted() && $episodeForm->isValid()) {
+            $app['dao.episode']->save($episode);
+            $app['session']->getFlashBag()->add('success', 'The episode was successfully updated.');
         }
-        return $app['twig']->render('article_form.html.twig', array(
-            'title' => 'Edit article',
-            'articleForm' => $articleForm->createView()));
+        return $app['twig']->render('episode_form.html.twig', array(
+            'title' => 'Edit episode',
+            'episodeForm' => $episodeForm->createView()));
     }
 
     /**
-     * Delete article controller.
+     * Delete episode controller.
      *
-     * @param integer $id Article id
+     * @param integer $id Episode id
      * @param Application $app Silex application
      */
-    public function deleteArticleAction($id, Application $app) {
+    public function deleteEpisodeAction($id, Application $app) {
         // Delete all associated comments
-        $app['dao.comment']->deleteAllByArticle($id);
-        // Delete the article
-        $app['dao.article']->delete($id);
-        $app['session']->getFlashBag()->add('success', 'The article was successfully removed.');
+        $app['dao.comment']->deleteAllByEpisode($id);
+        // Delete the episode
+        $app['dao.episode']->delete($id);
+        $app['session']->getFlashBag()->add('success', 'The episode was successfully removed.');
         // Redirect to admin home page
         return $app->redirect($app['url_generator']->generate('admin'));
     }

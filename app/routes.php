@@ -4,29 +4,29 @@
 $app->get('/', "projet4\Controller\HomeController::indexAction")
 ->bind('home');
 
-// Detailed info about an article
-$app->match('/article/{id}', "projet4\Controller\HomeController::articleAction")
-->bind('article');
+// Detailed info about an episode
+$app->match('/episode/{id}', "projet4\Controller\HomeController::episodeAction")
+->bind('episode');
 
 // Login form
-$app->get('/login', "projet4\Controller\HomeController::loginAction")
+$app->get('/login', "projet4\Controller\AuthController::loginAction")
 ->bind('login');
 
 // Admin zone
 $app->get('/admin', "projet4\Controller\AdminController::indexAction")
 ->bind('admin');
 
-// Add a new article
-$app->match('/admin/article/add', "projet4\Controller\AdminController::addArticleAction")
-->bind('admin_article_add');
+// Add a new episode
+$app->match('/admin/episode/add', "projet4\Controller\AdminController::addEpisodeAction")
+->bind('admin_episode_add');
 
-// Edit an existing article
-$app->match('/admin/article/{id}/edit', "projet4\Controller\AdminController::editArticleAction")
-->bind('admin_article_edit');
+// Edit an existing episode
+$app->match('/admin/episode/{id}/edit', "projet4\Controller\AdminController::editEpisodeAction")
+->bind('admin_episode_edit');
 
-// Remove an article
-$app->get('/admin/article/{id}/delete', "projet4\Controller\AdminController::deleteArticleAction")
-->bind('admin_article_delete');
+// Remove an episode
+$app->get('/admin/episode/{id}/delete', "projet4\Controller\AdminController::deleteEpisodeAction")
+->bind('admin_episode_delete');
 
 // Edit an existing comment
 $app->match('/admin/comment/{id}/edit', "projet4\Controller\AdminController::editCommentAction")
@@ -48,18 +48,18 @@ $app->match('/admin/user/{id}/edit', "projet4\Controller\AdminController::editUs
 $app->get('/admin/user/{id}/delete', "projet4\Controller\AdminController::deleteUserAction")
 ->bind('admin_user_delete');
 
-// API : get all articles
-$app->get('/api/articles', "projet4\Controller\ApiController::getArticlesAction")
-->bind('api_articles');
+// API : get all episodes
+$app->get('/api/episodes', "projet4\Controller\ApiController::getEpisodesAction")
+->bind('api_episodes');
 
-// API : get an article
-$app->get('/api/article/{id}', "projet4\Controller\ApiController::getArticleAction")
-->bind('api_article');
+// API : get an episode
+$app->get('/api/episode/{id}', "projet4\Controller\ApiController::geteEpisodeAction")
+->bind('api_episode');
 
-// API : create an article
-$app->post('/api/article', "projet4\Controller\ApiController::addArticleAction")
-->bind('api_article_add');
+// API : create an episode
+$app->post('/api/episode', "projet4\Controller\ApiController::addEpisodeAction")
+->bind('api_episode_add');
 
-// API : remove an article
-$app->delete('/api/article/{id}', "projet4\Controller\ApiController::deleteArticleAction")
-->bind('api_article_delete');
+// API : remove an episode
+$app->delete('/api/episode/{id}', "projet4\Controller\ApiController::deleteEpisodeAction")
+->bind('api_episode_delete');

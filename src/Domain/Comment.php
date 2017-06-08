@@ -26,11 +26,11 @@ class Comment
     private $content;
 
     /**
-     * Associated article.
+     * Associated episode.
      *
-     * @var \projet4\Domain\Article
+     * @var \projet4\Domain\Episode
      */
-    private $article;
+    private $episode;
     /**
      *
      * @var string 
@@ -69,12 +69,12 @@ class Comment
         return $this;
     }
 
-    public function getArticle() {
-        return $this->article;
+    public function getEpisode() {
+        return $this->episode;
     }
 
-    public function setArticle(Article $article) {
-        $this->article = $article;
+    public function setEpisode(Episode $episode) {
+        $this->episode = $episode;
         return $this;
     }
     

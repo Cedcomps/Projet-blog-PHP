@@ -17,7 +17,7 @@ class CommentType extends AbstractType
                     'label'           => 'Votre eMail ',
                     'attr'            => ['placeholder' => '(ne sera pas publié)'],
                     'required'        => true,
-                    'invalid_message' => 'Cette eMail n\'est pas valide.',
+                    'invalid_message' => 'Cet eMail n\'est pas valide.',
                     'constraints'     => new Assert\Email(['checkMX' => true]),
                 ])
                 ->add('website', UrlType::class, [
@@ -38,3 +38,4 @@ class CommentType extends AbstractType
     }
 
 }
+   

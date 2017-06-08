@@ -12,9 +12,9 @@ ExceptionHandler::register();
 $app->register(new Silex\Provider\DoctrineServiceProvider());
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../views',
-    'twig.options'    => array(
-        'cache' => __DIR__ . '/../var/cache/twig',
-        )
+    /* 'twig.options'    => array(
+         'cache' => __DIR__ . '/../var/cache/twig',
+         )*/ //problème de cache avec modification du twig
 ));
 $app['twig'] = $app->extend('twig', function(Twig_Environment $twig, $app) {
     $twig->addExtension(new Twig_Extensions_Extension_Text());
@@ -48,21 +48,21 @@ $app->register(new Silex\Provider\LocaleServiceProvider());
 $app->register(new Silex\Provider\TranslationServiceProvider());
 $app->register(new Silex\Provider\ValidatorServiceProvider());
 $app->register(new Silex\Provider\MonologServiceProvider(), array(
-    'monolog.logfile' => __DIR__.'/../var/logs/microcms.log',
+    'monolog.logfile' => __DIR__.'/../var/logs/projet4.log',
     'monolog.name' => 'projet4',
     'monolog.level' => $app['monolog.level']
 ));
 
 // Register services
-$app['dao.article'] = function ($app) {
-    return new projet4\DAO\ArticleDAO($app['db']);
+$app['dao.episode'] = function ($app) {
+    return new projet4\DAO\EpisodeDAO($app['db']);
 };
 $app['dao.user'] = function ($app) {
     return new projet4\DAO\UserDAO($app['db']);
 };
 $app['dao.comment'] = function ($app) {
     $commentDAO = new projet4\DAO\CommentDAO($app['db']);
-    $commentDAO->setArticleDAO($app['dao.article']);
+    $commentDAO->setEpisodeDAO($app['dao.episode']);
     $commentDAO->setUserDAO($app['dao.user']);
     return $commentDAO;
 };

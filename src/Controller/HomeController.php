@@ -15,24 +15,24 @@ class HomeController {
      * @param Application $app Silex application
      */
     public function indexAction(Application $app) {
-        $articles = $app['dao.article']->findAll();
-        return $app['twig']->render('index.html.twig', array('articles' => $articles));
+        $episodes = $app['dao.episode']->findAll();
+        return $app['twig']->render('index.html.twig', array('episodes' => $episodes));
     }
     
     /**
-     * Article details controller.
+     * episode details controller.
      *
-     * @param integer $id Article id
+     * @param integer $id Episode id
      * @param Request $request Incoming request
      * @param Application $app Silex application
      */
-    public function articleAction($id, Request $request, Application $app) {
-        $article = $app['dao.article']->find($id);
+    public function episodeAction($id, Request $request, Application $app) {
+        $episode = $app['dao.episode']->find($id);
         $commentFormView = null;
         if ($app['security.authorization_checker']->isGranted('IS_AUTHENTICATED_FULLY')) {
             // A user is fully authenticated : he can add comments
             $comment = new Comment();
-            $comment->setArticle($article);
+            $comment->setEpisode($episode);
             $user = $app['user'];
             $comment->setAuthor($user);
             $commentForm = $app['form.factory']->create(CommentType::class, $comment);
@@ -43,24 +43,12 @@ class HomeController {
             }
             $commentFormView = $commentForm->createView();
         }
-        $comments = $app['dao.comment']->findAllByArticle($id);
+        $comments = $app['dao.comment']->findAllByEpisode($id);
         
-        return $app['twig']->render('article.html.twig', array(
-            'article' => $article,
+        return $app['twig']->render('episode.html.twig', array(
+            'episode' => $episode,
             'comments' => $comments,
             'commentForm' => $commentFormView));
     }
     
-    /**
-     * User login controller.
-     *
-     * @param Request $request Incoming request
-     * @param Application $app Silex application
-     */
-    public function loginAction(Request $request, Application $app) {
-        return $app['twig']->render('login.html.twig', array(
-            'error'         => $app['security.last_error']($request),
-            'last_username' => $app['session']->get('_security.last_username'),
-        ));
-    }
 }

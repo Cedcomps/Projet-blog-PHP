@@ -3,10 +3,10 @@
 {% set page_title = 'Accueil' %}
 
 {% block content %}
-{% for article in articles %}
-<article>
-    <h2><a class="articleTitle" href="{{ path('article', { 'id': article.id }) }}">{{ article.title }}</a></h2>
-    <p>{{ article.content|raw }}</p>
-</article>
+{% for episode in episodes %}
+<episode>
+    <h2><a class="episodeTitle" href="{{ path('episode', { 'id': episode.id }) }}">{{ episode.title }}</a></h2>
+    <p>{{ episode.content|raw }}</p>
+</episode>
 {% endfor %}
 {% endblock %}

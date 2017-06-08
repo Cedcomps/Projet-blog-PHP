@@ -6,8 +6,8 @@ $app['db.options'] = array(
     'charset'  => 'utf8',
     'host'     => 'localhost',
     'port'     => '3306',
-    'dbname'   => 'microcms',
-    'user'     => 'microcms_user',
+    'dbname'   => 'projet4',
+    'user'     => 'projet4_user',
     'password' => 'secret',
 );
 

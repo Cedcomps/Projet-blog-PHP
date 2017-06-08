@@ -7,17 +7,17 @@ use projet4\Domain\Comment;
 class CommentDAO extends DAO 
 {
     /**
-     * @var \projet4\DAO\ArticleDAO
+     * @var \projet4\DAO\EpisodeDAO
      */
-    private $articleDAO;
+    private $episodeDAO;
 
     /**
      * @var \projet4\DAO\UserDAO
      */
     private $userDAO;
 
-    public function setArticleDAO(ArticleDAO $articleDAO) {
-        $this->articleDAO = $articleDAO;
+    public function setEpisodeDAO(EpisodeDAO $episodeDAO) {
+        $this->episodeDAO = $episodeDAO;
     }
 
     public function setUserDAO(UserDAO $userDAO) {
@@ -43,28 +43,28 @@ class CommentDAO extends DAO
     }
 
     /**
-     * Return a list of all comments for an article, sorted by date (most recent last).
+     * Return a list of all comments for an episode, sorted by date (most recent last).
      *
-     * @param integer $articleId The article id.
+     * @param integer $episodeId The episode id.
      *
-     * @return array A list of all comments for the article.
+     * @return array A list of all comments for the episode.
      */
-    public function findAllByArticle($articleId) {
-        // The associated article is retrieved only once
-        $article = $this->articleDAO->find($articleId);
+    public function findAllByEpisode($episodeId) {
+        // The associated episode is retrieved only once
+        $episode = $this->episodeDAO->find($episodeId);
 
         // art_id is not selected by the SQL query
-        // The article won't be retrieved during domain objet construction
+        // The episode won't be retrieved during domain objet construction
         $sql = "select com_id, com_content, com_url, com_email, usr_id from t_comment where art_id=? order by com_id";
-        $result = $this->getDb()->fetchAll($sql, array($articleId));
+        $result = $this->getDb()->fetchAll($sql, array($episodeId));
 
         // Convert query result to an array of domain objects
         $comments = array();
         foreach ($result as $row) {
             $comId = $row['com_id'];
             $comment = $this->buildDomainObject($row);
-            // The associated article is defined for the constructed comment
-            $comment->setArticle($article);
+            // The associated episode is defined for the constructed comment
+            $comment->setEpisode($episode);
             $comments[$comId] = $comment;
         }
         return $comments;
@@ -95,7 +95,7 @@ class CommentDAO extends DAO
      */
     public function save(Comment $comment) {
         $commentData = array(
-            'art_id' => $comment->getArticle()->getId(),
+            'art_id' => $comment->getEpisode()->getId(),
             'usr_id' => $comment->getAuthor()->getId(),
             'com_content' => $comment->getContent(),
             'com_url'     => $comment->getWebsite(),
@@ -115,12 +115,12 @@ class CommentDAO extends DAO
     }
 
     /**
-     * Removes all comments for an article
+     * Removes all comments for an episode
      *
-     * @param integer $articleId The id of the article
+     * @param integer $episodeId The id of the episode
      */
-    public function deleteAllByArticle($articleId) {
-        $this->getDb()->delete('t_comment', array('art_id' => $articleId));
+    public function deleteAllByEpisode($episodeId) {
+        $this->getDb()->delete('t_comment', array('art_id' => $episodeId));
     }
 
     /**
@@ -156,10 +156,10 @@ class CommentDAO extends DAO
         $comment->setEmail($row['com_email']);
 
         if (array_key_exists('art_id', $row)) {
-            // Find and set the associated article
-            $articleId = $row['art_id'];
-            $article = $this->articleDAO->find($articleId);
-            $comment->setArticle($article);
+            // Find and set the associated episode
+            $episodeId = $row['art_id'];
+            $episode = $this->episodeDAO->find($episodeId);
+            $comment->setEpisode($episode);
         }
         if (array_key_exists('usr_id', $row)) {
             // Find and set the associated author
