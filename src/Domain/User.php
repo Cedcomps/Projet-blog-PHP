@@ -75,7 +75,7 @@ class User implements UserInterface
         return $this->email;
     }
 
-    public function setEmail($username) {
+    public function setEmail($email) {
         $this->email = $email;
         return $this;
     }

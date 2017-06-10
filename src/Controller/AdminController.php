@@ -42,7 +42,7 @@ class AdminController {
             $app['session']->getFlashBag()->add('success', 'L\'épisode a été créé avec succès.');
         }
         return $app['twig']->render('episode_form.html.twig', array(
-            'title' => 'New episode',
+            'title' => 'Nouvel episode',
             'episodeForm' => $episodeForm->createView()));
     }
 
@@ -139,7 +139,7 @@ class AdminController {
             $app['session']->getFlashBag()->add('success', 'L\'utilisateur a été créé avec succès.');
         }
         return $app['twig']->render('user_form.html.twig', array(
-            'title' => 'New user',
+            'title' => 'Nouvel utilisateur',
             'userForm' => $userForm->createView()));
     }
 
