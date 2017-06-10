@@ -12,7 +12,7 @@
 <div class="row">
     <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
         <ul class="nav nav-tabs nav-justified">
-            <li class="active"><a href="#episodes" data-toggle="tab">episodes</a></li>
+            <li class="active"><a href="#episodes" data-toggle="tab">Episodes</a></li>
             <li><a href="#comments" data-toggle="tab">Commentaires</a></li>
             <li><a href="#users" data-toggle="tab">Utilisateurs</a></li>
         </ul>
@@ -63,7 +63,7 @@
         {% else %}
         <div class="alert alert-warning">Aucun episode trouvé.</div>
         {% endif %}
-        <a href="{{ path('admin_episode_add') }}"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Ajouté episode</button></a>
+        <a href="{{ path('admin_episode_add') }}"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Ajouter Episode</button></a>
     </div>
     <div class="tab-pane fade adminTable" id="comments">
         <!-- Insérer ici le code de gestion des commentaires -->
