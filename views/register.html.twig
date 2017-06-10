@@ -1,10 +1,20 @@
 {% extends 'layout.html.twig' %}
-{#{% form_theme userForm 'bootstrap_3_horizontal_layout.html.twig' %}#}
-
-
+{% form_theme userForm 'bootstrap_3_horizontal_layout.html.twig' %}
+{% import "Macros/recaptcha.html.twig" as recaptcha %}
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
+    <h2 class="text-center">{{ block('title') }}</h2>
+    {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="alert alert-success">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+    {% if form_errors(userForm.password.first) %}
+        <div class="alert alert-danger">
+            {{ form_errors(userForm.password.first) }}
+        </div>
+    {% endif %}
 
     <div class="well">
         {{ form_start(userForm) }}
@@ -20,13 +30,15 @@
 
         {{ form_row(userForm.email)}}
         {{ form_widget(userForm.email)}}
+        
+        {{ recaptcha.recaptcha("6Ld7piQUAAAAALUeH-88SVMIiTb-xIyGoAE0VGV9") }}
 
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-3">
-                <input type="submit" class="btn btn-primary" value="Sauvegarder" />
+            <div class="col-xs-offset-3 col-xs-6">
+                <input type="submit" class="btn btn-success btn-block btn-lg" value="Créer un compte" />
             </div>
         </div>
 
-        {{ form_end(userForm) }}
+        {{ form_end(userForm, {'render_rest': false}) }}
     </div>
 {% endblock %}

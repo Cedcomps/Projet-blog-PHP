@@ -9,7 +9,7 @@
     <h2>{{ episode.title }}</h2>
     <p>{{ episode.content|raw }}</p>
 
-    <h3>Commentaire</h3>
+    <h3>Commentaires:</h3>
     {% for comment in comments %}
         <strong>{{ comment.author.username }}</strong> <em>le {{ comment.CreatedAt|localizeddate("medium", "none", null, null, "d/M/yy à HH:hh:mm") }}</em> a commenté : {{ comment.content }}<br>
     {% else %}
