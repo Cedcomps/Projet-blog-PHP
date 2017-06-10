@@ -1,21 +1,10 @@
 {% extends 'layout.html.twig' %}
-{% form_theme userForm 'bootstrap_3_horizontal_layout.html.twig' %}
+{#{% form_theme userForm 'bootstrap_3_horizontal_layout.html.twig' %}#}
 
 
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-    <h2 class="text-center">{{ block('title') }}</h2>
-    {% for flashMessage in app.session.flashbag.get('success') %}
-        <div class="alert alert-success">
-            {{ flashMessage }}
-        </div>
-    {% endfor %}
-    {% if form_errors(userForm.password.first) %}
-        <div class="alert alert-danger">
-            {{ form_errors(userForm.password.first) }}
-        </div>
-    {% endif %}
 
     <div class="well">
         {{ form_start(userForm) }}
