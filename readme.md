@@ -18,11 +18,13 @@ Voici les principales caractéristiques de l'architecture :
 * utilisation des espaces de noms et chargement automatique des classes grâce à [Composer](https://getcomposer.org/) ;
 * intégration du moteur de templates [Twig](http://twig.sensiolabs.org/) pour faciliter l'écriture des vues ;
 * présentation moderne et adaptée au terminal utilisé (*responsive design*) grâce au framework Web [Bootstrap](http://getbootstrap.com/) ;
-* gstion avancée de la sécurité et des formulaires grâce aux composants du framework [Symfony](http://symfony.com) ;
+* gestion avancée de la sécurité et des formulaires grâce aux composants du framework [Symfony](http://symfony.com) ;
 * back-office d'administration ;
 * tests fonctionnels automatisés utilisant [PHPUnit](https://phpunit.de/) ;
 * journalisation avec [Monolog](https://github.com/Seldaek/monolog) et gestion des erreurs ;
 * API utilisant le format JSON.
+* Espace membre login/register
+* Création de compte et commentaire modéré via [Google reCaptcha](https://www.google.com/recaptcha/intro/android.html)
 
 ## Instructions
 
