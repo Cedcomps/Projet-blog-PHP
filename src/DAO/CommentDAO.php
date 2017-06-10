@@ -55,7 +55,7 @@ class CommentDAO extends DAO
 
         // art_id is not selected by the SQL query
         // The episode won't be retrieved during domain objet construction
-        $sql = "select com_id, com_content, com_url, com_email, usr_id from t_comment where art_id=? order by com_id";
+        $sql = "select com_id, com_content, usr_id from t_comment where art_id=? order by com_id";
         $result = $this->getDb()->fetchAll($sql, array($episodeId));
 
         // Convert query result to an array of domain objects
@@ -98,8 +98,6 @@ class CommentDAO extends DAO
             'art_id' => $comment->getEpisode()->getId(),
             'usr_id' => $comment->getAuthor()->getId(),
             'com_content' => $comment->getContent(),
-            'com_url'     => $comment->getWebsite(),
-            'com_email'   => $comment->getEmail(),
             );
 
         if ($comment->getId()) {
@@ -152,8 +150,6 @@ class CommentDAO extends DAO
         $comment = new Comment();
         $comment->setId($row['com_id']);
         $comment->setContent($row['com_content']);
-        $comment->setWebsite($row['com_url']);
-        $comment->setEmail($row['com_email']);
 
         if (array_key_exists('art_id', $row)) {
             // Find and set the associated episode
