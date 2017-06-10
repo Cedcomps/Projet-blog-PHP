@@ -122,13 +122,15 @@
                 <thead>
                     <tr>
                         <th>Pseudo</th>
+                        <th>Email</th>
                         <th>Role</th>
                         <th></th>  <!-- Actions column -->
                     </tr>
                 </thead>
                 {% for user in users %}
                 <tr>
-                    <td>{{ user.username }}</a></td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
                     <td>
                         {% if user.role == 'ROLE_ADMIN' %}
                             Admin
