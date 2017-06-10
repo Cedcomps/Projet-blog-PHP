@@ -31,16 +31,12 @@ class Comment
      * @var \projet4\Domain\Episode
      */
     private $episode;
+
     /**
-     *
-     * @var string 
+     * Created_at
+     * @var date 
      */
-    private $email;
-    /**
-     *
-     * @var string 
-     */
-    private $website;
+    private $createdAt;
 
     public function getId() {
         return $this->id;
@@ -77,23 +73,13 @@ class Comment
         $this->episode = $episode;
         return $this;
     }
-    
-    public function getEmail() {
-        return $this->email;
+
+    public function getCreatedAt() {
+        return $this->createdAt;
     }
 
-    public function getWebsite() {
-        return $this->website;
-    }
-
-    public function setEmail($email) {
-        $this->email = $email;
+    public function setCreatedAt($createdAt) {
+        $this->createdAt = $createdAt;
         return $this;
     }
-
-    public function setWebsite($website) {
-        $this->website = $website;
-        return $this;
-    }
-
 }

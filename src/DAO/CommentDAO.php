@@ -30,7 +30,7 @@ class CommentDAO extends DAO
      * @return array A list of all comments.
      */
     public function findAll() {
-        $sql = "select * from t_comment order by com_id desc";
+        $sql = "select * from t_comment order by created_at";
         $result = $this->getDb()->fetchAll($sql);
 
         // Convert query result to an array of domain objects
@@ -55,7 +55,7 @@ class CommentDAO extends DAO
 
         // art_id is not selected by the SQL query
         // The episode won't be retrieved during domain objet construction
-        $sql = "select com_id, com_content, usr_id from t_comment where art_id=? order by com_id";
+        $sql = "select com_id, com_content, usr_id, created_at from t_comment where art_id=? order by created_at";
         $result = $this->getDb()->fetchAll($sql, array($episodeId));
 
         // Convert query result to an array of domain objects
@@ -150,6 +150,7 @@ class CommentDAO extends DAO
         $comment = new Comment();
         $comment->setId($row['com_id']);
         $comment->setContent($row['com_content']);
+        $comment->setCreatedAt($row['created_at']);
 
         if (array_key_exists('art_id', $row)) {
             // Find and set the associated episode

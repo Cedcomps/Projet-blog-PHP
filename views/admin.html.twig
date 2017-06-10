@@ -72,8 +72,9 @@
             <table class="table table-striped table-condensed">
                 <thead>
                     <tr>
-                        <th>episode</th>
+                        <th>Episode</th>
                         <th>Auteur</th>
+                        <th>Créé le</th>
                         <th>Contenu</th>
                         <th></th>  <!-- Actions column -->
                     </tr>
@@ -82,6 +83,7 @@
                 <tr>
                     <td><a class="episodeTitle" href="{{ path('episode', { 'id': comment.episode.id }) }}">{{ comment.episode.title }}</a></td>
                     <td>{{ comment.author.username }}</td>
+                    <td>{{ comment.CreatedAt }}</td>
                     <td>{{ comment.content | truncate(60) }}</td>
                     <td>
                         <a href="{{ path('admin_comment_edit', { 'id': comment.id }) }}" class="btn btn-info btn-xs" title="Editer"><span class="glyphicon glyphicon-edit"></span></a>
