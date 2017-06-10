@@ -42,7 +42,7 @@ class AdminController {
             $app['session']->getFlashBag()->add('success', 'L\'épisode a été créé avec succès.');
         }
         return $app['twig']->render('episode_form.html.twig', array(
-            'title' => 'Nouvel episode',
+            'title' => 'Nouvel épisode',
             'episodeForm' => $episodeForm->createView()));
     }
 
@@ -62,7 +62,7 @@ class AdminController {
             $app['session']->getFlashBag()->add('success', 'L\'épisode a été mis à jour avec succès.');
         }
         return $app['twig']->render('episode_form.html.twig', array(
-            'title' => 'Edit episode',
+            'title' => 'Editer épisode',
             'episodeForm' => $episodeForm->createView()));
     }
 
@@ -98,7 +98,7 @@ class AdminController {
             $app['session']->getFlashBag()->add('success', 'Le commentaire a été mis à jour.');
         }
         return $app['twig']->render('comment_form.html.twig', array(
-            'title' => 'Edit comment',
+            'title' => 'Editer commentaire',
             'commentForm' => $commentForm->createView()));
     }
 
@@ -165,7 +165,7 @@ class AdminController {
             $app['session']->getFlashBag()->add('success', 'L\'utilisateur a été mis à jour.');
         }
         return $app['twig']->render('user_form.html.twig', array(
-            'title' => 'Edit user',
+            'title' => 'Editer utilisateur',
             'userForm' => $userForm->createView()));
     }
 
