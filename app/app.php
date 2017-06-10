@@ -54,6 +54,7 @@ $app->register(new Silex\Provider\MonologServiceProvider(), array(
     'monolog.level' => $app['monolog.level']
 ));
 
+
 // Register services
 $app['dao.episode'] = function ($app) {
     return new projet4\DAO\EpisodeDAO($app['db']);

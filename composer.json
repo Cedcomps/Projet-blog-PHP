@@ -1,4 +1,12 @@
 {
+    "authors": [
+        {
+            "name": "Cédric Compagnon",
+            "email": "contact@cedeev.com",
+            "homepage": "https://cedeev.com",
+            "role": "Web Developer"
+        }
+    ],
     "require": {
         "silex/silex": "~2.0",
         "doctrine/dbal": "~2.5",
@@ -11,7 +19,7 @@
         "symfony/config": "~2.8|3.0.*",
         "twig/extensions": "~1.4",
         "symfony/monolog-bridge": "~2.8|3.0.*",
-        "google/recaptcha": "^1.1",
+        "google/recaptcha": "~1.1",
         "symfony/validator": "^3.3"
     },
     "require-dev": {

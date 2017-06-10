@@ -27,7 +27,7 @@ class HomeController {
      * @param Request $request Incoming request
      * @param Application $app Silex application
      */
-   public function episodeAction($id, Request $request, Application $app) {
+    public function episodeAction($id, Request $request, Application $app) {
         $episode = $app['dao.episode']->find($id);
         $commentFormView = null;
         if ($app['security.authorization_checker']->isGranted('IS_AUTHENTICATED_FULLY')) {
@@ -38,9 +38,20 @@ class HomeController {
             $comment->setAuthor($user);
             $commentForm = $app['form.factory']->create(CommentType::class, $comment);
             $commentForm->handleRequest($request);
+//vérif google reCaptcha
             if ($commentForm->isSubmitted() && $commentForm->isValid()) {
-                $app['dao.comment']->save($comment);
-                $app['session']->getFlashBag()->add('success', 'Votre commentaire a été enregistré avec succès.');
+                $recaptcha = new ReCaptcha('6Ld7piQUAAAAALy29yMVNW7o8XHO39uJLCsNHZqI');
+                $resp = $recaptcha->verify($request->request->get('g-recaptcha-response'), $request->getClientIp());
+
+                if (!$resp->isSuccess()) {
+                    foreach ($resp->getErrorCodes() as $code) {
+                        $app['session']->getFlashBag()->add('info', 'Le reCAPTCHA n\'a pas fonctionné, veuillez réessayer (reCAPTCHA : ' . $code . ')');
+                    }
+                } else {
+                    // Successfull Google reCaptcha validation
+                    $app['dao.comment']->save($comment);
+                    $app['session']->getFlashBag()->add('success', 'Votre commentaire a été enregistré avec succès.');
+                } 
             }
             $commentFormView = $commentForm->createView();
         }
@@ -53,17 +64,3 @@ class HomeController {
     }
     
 }
-
-//6Ld7piQUAAAAALy29yMVNW7o8XHO39uJLCsNHZqI key secret google
-
-/* Verification by Google reCaptcha */
-                // $recaptcha = new ReCaptcha('6Ld7piQUAAAAALy29yMVNW7o8XHO39uJLCsNHZqI');
-                // // Make the call to verify the response and also pass the user's IP address
-                // $resp = $recaptcha->verify($_POST['g-recaptcha-response'], $_SERVER['REMOTE_ADDR']);
-                // if (!$resp->isSuccess()) {
-                //     foreach ($resp->getErrorCodes() as $code) { $error = ''; $error .= $code ; }
-                //             $message = "Le reCAPTCHA n'a pas fonctionné. Réessayez." . " (reCAPTCHA : " . $error . ")";
-                //             $request->getSession()->getFlashbag()->add('info', $message); 
-                // } else {      
-                //    //
-                // }
