@@ -24,6 +24,12 @@ class Episode
      * @var string
      */
     private $content;
+    /**
+     * episode draft.
+     * Values : Brouillon or Publié.
+     * @var boolean
+     */
+    private $draft;
 
     public function getId() {
         return $this->id;
@@ -49,6 +55,14 @@ class Episode
 
     public function setContent($content) {
         $this->content = $content;
+        return $this;
+    }
+    public function getDraft() {
+        return $this->draft;
+    }
+
+    public function setDraft($draft) {
+        $this->draft = $draft;
         return $this;
     }
 }

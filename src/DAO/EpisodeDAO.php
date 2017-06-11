@@ -23,6 +23,20 @@ class EpisodeDAO extends DAO
         }
         return $episodes;
     }
+    
+    /**
+     * {@inheritDoc}
+     *
+     */
+    public function findOneBy(array $array) {
+        $sql = "select * from t_episode where $array[0]=?";
+        $row = $this->getDb()->fetchAssoc($sql, array($array[1]));
+
+        if ($row) {
+            return $this->buildDomainObject($row);
+        }
+        return false;
+    }
 
     /**
      * Returns an episode matching the supplied id.
@@ -51,6 +65,7 @@ class EpisodeDAO extends DAO
         $episodeData = array(
             'art_title' => $episode->getTitle(),
             'art_content' => $episode->getContent(),
+            'art_draft' => $episode->getDraft(),
             );
 
         if ($episode->getId()) {
@@ -87,6 +102,7 @@ class EpisodeDAO extends DAO
         $episode->setId($row['art_id']);
         $episode->setTitle($row['art_title']);
         $episode->setContent($row['art_content']);
+        $episode->setDraft($row['art_draft']);
         return $episode;
     }
 }

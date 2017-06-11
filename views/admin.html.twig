@@ -27,6 +27,7 @@
                     <tr>
                         <th>Titre</th>
                         <th>Contenu</th>
+                        <th>Statut</th>
                         <th></th>  <!-- Actions column -->
                     </tr>
                 </thead>
@@ -34,6 +35,13 @@
                 <tr>
                     <td><a class="episodeTitle" href="{{ path('episode', { 'id': episode.id }) }}">{{ episode.title }}</a></td>
                     <td>{{ episode.content|truncate(500)|raw }}</td>
+                    <td>
+                        {% if episode.draft == '0' %}
+                            Publié
+                        {% else %}
+                            Brouillon
+                        {% endif %}
+                    </td>
                     <td>
                         <a href="{{ path('admin_episode_edit', { 'id': episode.id }) }}" class="btn btn-info btn-xs" title="Editer"><span class="glyphicon glyphicon-edit"></span></a>
                         <button type="button" class="btn btn-danger btn-xs" title="Supprimer" data-toggle="modal" data-target="#episodeDialog{{ episode.id }}"><span class="glyphicon glyphicon-remove"></span>

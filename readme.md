@@ -25,6 +25,7 @@ Voici les principales caractéristiques de l'architecture :
 * API utilisant le format JSON.
 * Espace membre login/register
 * Création de compte et commentaire modéré via [Google reCaptcha](https://www.google.com/recaptcha/intro/android.html)
+* Episodes créés via [TinyMCE](https://www.tinymce.com/)
 
 ## Instructions
 

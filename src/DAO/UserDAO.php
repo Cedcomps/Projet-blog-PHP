@@ -46,6 +46,20 @@ class UserDAO extends DAO implements UserProviderInterface
     }
 
     /**
+     * {@inheritDoc}
+     *
+     */
+    public function findOneBy(array $array) {
+        $sql = "select * from t_user where $array[0]=?";
+        $row = $this->getDb()->fetchAssoc($sql, array($array[1]));
+
+        if ($row) {
+            return $this->buildDomainObject($row);
+        }
+        return false;
+    }
+
+    /**
      * Saves a user into the database.
      *
      * @param \projet4\Domain\User $user The user to save
@@ -58,17 +72,17 @@ class UserDAO extends DAO implements UserProviderInterface
             'usr_password' => $user->getPassword(),
             'usr_role' => $user->getRole()
             );
-
-        if ($user->getId()) {
-            // The user has already been saved : update it
-            $this->getDb()->update('t_user', $userData, array('usr_id' => $user->getId()));
-        } else {
-            // The user has never been saved : insert it
-            $this->getDb()->insert('t_user', $userData);
-            // Get the id of the newly created user and set it on the entity.
-            $id = $this->getDb()->lastInsertId();
-            $user->setId($id);
-        }
+        
+            if ($user->getId()) {
+                // The user has already been saved : update it
+                $this->getDb()->update('t_user', $userData, array('usr_id' => $user->getId()));
+            } else {
+                // The user has never been saved : insert it
+                $this->getDb()->insert('t_user', $userData);
+                // Get the id of the newly created user and set it on the entity.
+                $id = $this->getDb()->lastInsertId();
+                $user->setId($id);
+            }          
     }
 
     /**

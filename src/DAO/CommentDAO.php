@@ -42,6 +42,20 @@ class CommentDAO extends DAO
         return $entities;
     }
 
+        /**
+     * {@inheritDoc}
+     *
+     */
+    public function findOneBy(array $array) {
+        $sql = "select * from t_comment where $array[0]=?";
+        $row = $this->getDb()->fetchAssoc($sql, array($array[1]));
+
+        if ($row) {
+            return $this->buildDomainObject($row);
+        }
+        return false;
+    }
+
     /**
      * Return a list of all comments for an episode, sorted by date (most recent last).
      *

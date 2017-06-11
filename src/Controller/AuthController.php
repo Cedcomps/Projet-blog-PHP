@@ -41,7 +41,7 @@ class AuthController
                     $app['session']->getFlashBag()->add('info', 'Le reCAPTCHA n\'a pas fonctionné, veuillez réessayer (reCAPTCHA : ' . $code . ')');
                 }
             } else {
-                // Successfull Google reCaptcha validation    
+                // Successfull Google reCaptcha validation 
                 // generate a random salt value
                 $salt = substr(md5(time()), 0, 23);
                 $user->setSalt($salt);
@@ -54,7 +54,6 @@ class AuthController
                 $user->setRole('ROLE_USER');
                 $app['dao.user']->save($user);
                 $app['session']->getFlashBag()->add('success', 'Le compte utilisateur a été créé avec succès. Veuillez vous connecter.');
-                //return $app->redirect($app['url_generator']->generate('login'));
             }
         }
         return $app['twig']->render('register.html.twig', [
