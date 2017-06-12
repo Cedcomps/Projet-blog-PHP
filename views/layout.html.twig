@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Billet simple pour l'Alaska par Jean Forteroche"/>
+    <meta name="description" content="Billet simple pour l'Alaska par Jean Forteroche, un livre écrit par épisode le temps d'une vague d'inspiration durant mon voyage en Alaska"/>
     <meta name="author" content="Jean Forteroche"/>
     <link href="{{ asset('/lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/microcms.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
     <title>{% if page_title is defined %} {{ page_title }} | {% endif %} Billet simple pour l'Alaska</title>
 </head>
 <body>
@@ -32,7 +32,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <span class="glyphicon glyphicon-user"></span> Bienvenue, {{ app.user.username }} <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="{{ path('logout') }}">Déconnexion</a></li>
+                                    <li><a href="{{ path('logout') }}"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Déconnexion</a></li>
                                 </ul>
                             </li>
                         {% else %}
@@ -40,7 +40,8 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <span class="glyphicon glyphicon-user"></span> Non connecté <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="{{ path('login') }}">Se connecter</a></li>
+                                    <li><a href="{{ path('login') }}"><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Se connecter</a></li>
+                                    <li><a href="{{ path('register') }}"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Créer un compte</a></li>
                                 </ul>
                             </li>
                         {% endif %}

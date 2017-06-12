@@ -1,5 +1,7 @@
 body { 
-    padding-top: 50px; 
+    padding-top: 50px;
+    background: url("../images/jeanforteroche.jpg") no-repeat;
+    background-size: cover; 
 }
 
 .footer {
