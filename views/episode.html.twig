@@ -3,6 +3,7 @@
 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
     {% form_theme commentForm 'bootstrap_3_horizontal_layout.html.twig' %}
 {% endif %}
+{% set page_title %} {{ episode.title }} {% endset %}
 {% block title %}{{ episode.title }}{% endblock %}
 
 {% block content %}
