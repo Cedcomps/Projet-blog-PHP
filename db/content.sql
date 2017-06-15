@@ -21,7 +21,7 @@ insert into t_episode values
 (4, 'Quatrième épisode', '<h3 style="text-align: center;">Ibique intersaepientes in Isauriae</h3>
 <div style="text-align: justify;">&nbsp;</div>
 <div style="text-align: justify;"><em>ibus igitur pascebantur maritima ibique opibus et tempore Lycaoniam maritima pascebantur contulerunt Isauriae praetenturis in se itinera contulerunt opibus densis inveniretur ora opibus ora et Lycaoniam inveniretur intersaepiente</em></div>
-<p style="text-align: justify;"><span style="text-decoration: underline;"><sup>s se igitur nihil opibus Isauriae </sup></span><sup>ibique densis ora cum in densis mox praetenturis contulerunt adnexam opibus Lycaoniam relicta adventicium cum et mox maritima ibique nihil adnexam contulerunt Lycaoniam itinera tempore densis Isauriae se ibique adventicium nihil maritima Lycaoniam igitur praetenturis ora igitur ibique temp</sup></p>
+<p style="text-align: justify;"><span style="text-decoration: underline;">s se igitur nihil opibus Isauriae </sup></span><sup>ibique densis ora cum in densis mox praetenturis contulerunt adnexam opibus Lycaoniam relicta adventicium cum et mox maritima ibique nihil adnexam contulerunt Lycaoniam itinera tempore densis Isauriae se ibique adventicium nihil maritima Lycaoniam igitur praetenturis ora igitur ibique temp</p>
 <p><em><span style="color: #ff00ff;">pascebantu<span style="color: #000000;">&nbsp;intersaepiente</span></span></em><span style="color: #000000;">s cum in nihil se relicta a</span></p>
 <ul>
 <li style="text-align: left;">dventicium adventicium intersaepientes <span style="color: #008000;">hil relicta Lycaoniam itinera ibique inte</span></li>

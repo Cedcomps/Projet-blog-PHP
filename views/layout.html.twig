@@ -6,13 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Billet simple pour l'Alaska par Jean Forteroche, un livre écrit par épisode le temps d'une vague d'inspiration durant mon voyage en Alaska"/>
     <meta name="author" content="Jean Forteroche"/>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Grand+Hotel" rel="stylesheet">
     <link href="{{ asset('/lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
     <title>{% if page_title is defined %} {{ page_title }} | {% endif %} Billet simple pour l'Alaska</title>
 </head>
 <body>
     <div class="container">
-        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+        <nav class="navbar frames navbar-default navbar-fixed-top navbar-inverse" role="navigation">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-target">
@@ -20,7 +22,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{ path('home') }}">Livre écrit par Jean Forteroche</a>
+                    <a class="hotel" href="{{ path('home') }}">Livre écrit par Jean Forteroche</a>
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-collapse-target">
                     <ul class="nav navbar-nav navbar-right">

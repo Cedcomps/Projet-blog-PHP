@@ -1,7 +1,10 @@
 body { 
-    padding-top: 50px;
+    padding-top: 90px;
     background: url("../images/jeanforteroche.jpg") no-repeat;
-    background-size: cover; 
+    background-size: cover;
+    font-family: 'Josefin Sans', sans-serif;
+    color: white;
+    font-size: 1.8em;
 }
 
 .footer {
@@ -27,4 +30,72 @@ body {
 label.required:after {
     content: " *";
     color: #c12e2a;
+}
+nav {
+    color: white;
+    font-weight: bold;
+}
+.frames {  
+    color: white;
+    border: 0px;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.3);
+}
+/*FONT*/
+h2 a {
+    color: #2DCEFF;
+    transition: all 1s ease-in-out;
+    font-size: 1.3em;
+}
+.hotel {
+   font-family: 'Grand Hotel', cursive;
+   font-size: 1.8em;
+   color: #722BBF;
+   transition: all 1s ease-in-out;
+}
+.hotel, h2 a:hover {
+    text-shadow:0px 0px 9px #ffffff;
+}
+.hotel:hover {
+    text-decoration: none;
+    color: white;
+    transform: scale(1.1);
+    text-shadow: none;
+}
+.form-control {
+    font-size: initial;
+}
+/*Panneau admin*/
+.well {
+    border: none;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.nav-tabs>li.active>a {
+    background-color: rgba(122, 54, 143, 0.3);
+    color: white;
+}
+a {
+    color: #BECEFF;   
+}
+a:hover {
+    text-shadow:0px 0px 5px #ffffff;
+}
+/*Menu navbar*/
+.btn-primary {
+    background-color: rgba(72, 54, 191, 0.6);
+    border: none;
+}
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus , .dropdown-menu>li>a, .dropdown-menu, .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
+    background-color: #DD647A;
+    color: white;
+    border: none;
+}
+/*alignement recaptcha*/
+.g-recaptcha {
+    padding-left: 5px;
+    padding-bottom: 10px;
+}
+/*PoPUP*/
+.modal-dialog {
+    color: rgb(122, 54, 143);
 }

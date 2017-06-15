@@ -1,16 +1,15 @@
 <?php
+
 namespace projet4\Constraint;
 
 use Symfony\Component\Validator\Constraint;
 
+/**
+ * @Annotation
+ */
 class Unique extends Constraint 
 {
-    public $notUniqueMessage = '%string% est déjà utilisé.';
+    public $message = '{{ string }} est déjà utilisé.';
     public $entity;
     public $field;
-
-    public function validatedBy()
-    {
-        return 'validator.unique';
-    }
 }

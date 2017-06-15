@@ -2,7 +2,9 @@
 
 namespace projet4\Domain;
 
+use projet4\Constraint\UniqueEntry;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 class User implements UserInterface
 {
@@ -127,4 +129,9 @@ class User implements UserInterface
     public function eraseCredentials() {
         // Nothing to do here
     }
+
+    // public static function loadValidatorMetadata(ClassMetadata $metadata) 
+    // {
+    //     $metadata->addPropertyConstraint('username', new UniqueEntry());
+    // }
 }

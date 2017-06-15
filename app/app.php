@@ -89,20 +89,3 @@ $app->before(function (Request $request) {
 //     }
 //     return $app['twig']->render('error.html.twig', array('message' => $message));
 // });
-
-
-
-if (isset($app['validator.validator_factory']))
-{
-    $app['validator.unique'] = function ($app)
-    {
-        $validator = new \projet4\Constraint\UniqueEntryValidator($app);
-        return $validator;
-    };
-    $app['validator.validator_service_ids'] =
-        isset($app['validator.validator_service_ids']) ? $app['validator.validator_service_ids'] : array();
-    $app['validator.validator_service_ids'] = array_merge(
-        $app['validator.validator_service_ids'],
-        array('validator.unique' => 'validator.unique')
-    );
-}

@@ -9,36 +9,39 @@
 {% block content %}
     <h2>{{ episode.title }}</h2>
     <p>{{ episode.content|raw }}</p>
-
-    <h3>Commentaires:</h3>
-    {% for comment in comments %}
-        <strong>{{ comment.author.username }}</strong> <em>le {{ comment.CreatedAt|localizeddate("medium", "none", null, null, "d/M/yy à HH:hh:mm") }}</em> a commenté : {{ comment.content }}<br>
-    {% else %}
-        Aucun commentaire.
-    {% endfor %}
-
-    <h3>Ajouter un commentaire</h3>
-    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-   
-        {{ form_start(commentForm) }}
-
-            {{ form_row(commentForm.content) }}
-            {{ form_widget(commentForm.content) }}
-            
-            {{ recaptcha.recaptcha("6Ld7piQUAAAAALUeH-88SVMIiTb-xIyGoAE0VGV9") }}
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-3">
-                    <input type="submit" class="btn btn-primary" value="Sauvegarder" />
-                </div>
-            </div>
-            
-        {{ form_end(commentForm) }}
-        {% for flashMessage in app.session.flashbag.get('success') %}
-            <div class="alert alert-success">
-                {{ flashMessage }}
-            </div>
+    <div class="well">
+        <h3>Commentaires:</h3>
+        {% for comment in comments %}
+            <strong>{{ comment.author.username }}</strong> <em>le {{ comment.CreatedAt|localizeddate("medium", "none", null, null, "d/M/yy à HH:hh:mm") }}</em> a commenté : {{ comment.content }}<br>
+        {% else %}
+            Aucun commentaire.
         {% endfor %}
-    {% else %}
+    </div>
+    <div class="well">
+        <h3>Ajouter un commentaire</h3>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+       
+            {{ form_start(commentForm) }}
+
+                {{ form_row(commentForm.content) }}
+                {{ form_widget(commentForm.content) }}
+                
+                {{ recaptcha.recaptcha("6Ld7piQUAAAAALUeH-88SVMIiTb-xIyGoAE0VGV9") }}
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-3">
+                        <input type="submit" class="btn btn-lg btn-primary" value="Sauvegarder" />
+                    </div>
+                </div>
+                
+            {{ form_end(commentForm) }}
+            {% for flashMessage in app.session.flashbag.get('success') %}
+                <div class="alert alert-success">
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
+        {% else %}
+    
         <a href="{{ path('login') }}">Connectez-vous</a> pour commenter.
-    {% endif %}
+        {% endif %}
+    </div>
 {% endblock %}

@@ -5,10 +5,12 @@
 {% block content %}
 	{% for episode in episodes %}
 		{% if episode.draft == '0' %}{# N'afiche pas les épisodes au statu de brouillon #}
-			<episode>
-			    <h2><a class="episodeTitle" href="{{ path('episode', { 'id': episode.id }) }}">{{ episode.title }}</a></h2>
-			    <p>{{ episode.content|raw }}</p>
-			</episode>
+			<div class="well">
+				<episode>
+				    <h2><a class="episodeTitle" href="{{ path('episode', { 'id': episode.id }) }}">{{ episode.title }}</a></h2>
+				    <p>{{ episode.content|raw }}</p>
+				</episode>
+			</div>
 		{% endif %}
 	{% endfor %}
 {% endblock %}

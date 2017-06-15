@@ -11,14 +11,21 @@ class UniqueEntryValidator extends ConstraintValidator
     public function __construct($app) {
         $this->app = $app;
     }
+    /**
+     * /
+     * @param  [type]     $value      [description]
+     * @param  Constraint $constraint [description]
+     * @return [type]                 [description]
+     */
     public function validate($value, Constraint $constraint)
     {
-        $exists = $this->app['dao.' . $constraint->entity ]->findOneBy(array($constraint->field, $value));
-        if ($exists)
-        {
-            $this->context->addViolation($constraint->notUniqueMessage, array('%string%' => $value));
-            return false;
-        }
-        return true;
+        $sameValue = $this->app['dao.user']->findOneBy(array($constraint->field, $value));
+            if ($sameValue)
+            {
+                $this->context->buildViolation($constraint->message)
+                     ->setParameter('{{ string }}', $value)
+                     ->addViolation();
+                return false;
+            }
     }
 }
