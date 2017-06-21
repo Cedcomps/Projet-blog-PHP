@@ -52,8 +52,15 @@ class AuthController
                 $password = $encoder->encodePassword($plainPassword, $user->getSalt());
                 $user->setPassword($password);
                 $user->setRole('ROLE_USER');
-                $app['dao.user']->save($user);
-                $app['session']->getFlashBag()->add('success', 'Le compte utilisateur a été créé avec succès. Veuillez vous connecter.');
+                $error = $app['dao.user']->save($user);
+                if ($error != "") {
+                    $app['session']->getFlashBag()->add('info', 'Ce nom d\'utilisateur ou cette adresse email est déjà pris(e)');
+                }
+                else {
+                    $app['dao.user']->save($user);
+                    $app['session']->getFlashBag()->add('success', 'Le compte utilisateur a été créé avec succès. Veuillez vous connecter.');  
+                }
+                
             }
         }
         return $app['twig']->render('register.html.twig', [

@@ -7,8 +7,10 @@
 {% block title %}{{ episode.title }}{% endblock %}
 
 {% block content %}
-    <h2>{{ episode.title }}</h2>
-    <p>{{ episode.content|raw }}</p>
+    <div class="well">
+        <h2 class="hotel">{{ episode.title }}</h2>
+        <p>{{ episode.content|raw }}</p>
+    </div>
     <div class="well">
         <h3>Commentaires:</h3>
         {% for comment in comments %}
@@ -34,11 +36,18 @@
                 </div>
                 
             {{ form_end(commentForm) }}
+
             {% for flashMessage in app.session.flashbag.get('success') %}
                 <div class="alert alert-success">
                     {{ flashMessage }}
                 </div>
             {% endfor %}
+            {% for flashMessage in app.session.flashbag.get('info') %}
+                <div class="alert alert-warning">
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
+
         {% else %}
     
         <a href="{{ path('login') }}">Connectez-vous</a> pour commenter.

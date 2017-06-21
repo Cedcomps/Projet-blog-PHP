@@ -75,17 +75,17 @@ $app->before(function (Request $request) {
         $request->request->replace(is_array($data) ? $data : array());
     }
 });
-// Register error handler
-// $app->error(function (\Exception $e, Request $request, $code) use ($app) {
-//     switch ($code) {
-//         case 403:
-//             $message = 'Accès refusé.';
-//             break;
-//         case 404:
-//             $message = 'La page demandée n\'a pas été trouvée.';
-//             break;
-//         default:
-//             $message = "Une erreur s'est produite.";
-//     }
-//     return $app['twig']->render('error.html.twig', array('message' => $message));
-// });
+//Register error handler
+$app->error(function (\Exception $e, Request $request, $code) use ($app) {
+    switch ($code) {
+        case 403:
+            $message = 'Accès refusé.';
+            break;
+        case 404:
+            $message = 'La page demandée n\'a pas été trouvée.';
+            break;
+        default:
+            $message = "Une erreur s'est produite.";
+    }
+    return $app['twig']->render('error.html.twig', array('message' => $message));
+});

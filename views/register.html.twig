@@ -6,11 +6,19 @@
 
 {% block content %}
     <h2 class="text-center">{{ block('title') }}</h2>
-    {% for flashMessage in app.session.flashbag.get('success') %}
+    
+    {% for flashMessage in app.session.flashbag.get('success') %} 
         <div class="alert alert-success">
             {{ flashMessage }}
         </div>
     {% endfor %}
+    
+    {% for flashMessage in app.session.flashbag.get('info') %}
+     <div class="alert alert-warning">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
     {% if form_errors(userForm.password.first) %}
         <div class="alert alert-danger">
             {{ form_errors(userForm.password.first) }}

@@ -4,10 +4,10 @@
 
 {% block content %}
 	{% for episode in episodes %}
-		{% if episode.draft == '0' %}{# N'afiche pas les épisodes au statu de brouillon #}
+		{% if episode.draft == '0' %}{# N'afiche pas les épisodes au statut de brouillon #}
 			<div class="well">
 				<episode>
-				    <h2><a class="episodeTitle" href="{{ path('episode', { 'id': episode.id }) }}">{{ episode.title }}</a></h2>
+				    <h2><a class="episodeTitle hotel" href="{{ path('episode', { 'id': episode.id }) }}">{{ episode.title }}</a></h2>
 				    <p>{{ episode.content|raw }}</p>
 				</episode>
 			</div>

@@ -40,6 +40,9 @@ insert into t_user values
 /* raw password is '@dm1n' */
 insert into t_user values
 (3, 'Jean Forteroche', 'admin@live.fr', '$2y$13$A8MQM2ZNOi99EW.ML7srhOJsCaybSbexAj/0yXrJs4gQ/2BqMMW2K', 'EDDsl&fBCJB|a5XUtAlnQN8', 'ROLE_ADMIN');
+/* raw password is 'marion' */
+insert into t_user values
+(4, 'Marion', 'marion@live.fr', '$2y$13$qggD6hKep08aqeopx9HgeuGELJQpCfNtFG3PL8uCydkUNlTetdhMi', '0c7c3c85dac92619cfc6363', 'ROLE_USER');
 
 insert into t_comment values
 (1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac.', 1, 1, NOW());

@@ -16,7 +16,9 @@ create table t_user (
     usr_email varchar(50) not null,
     usr_password varchar(88) not null,
     usr_salt varchar(60) not null,
-    usr_role varchar(50) not null 
+    usr_role varchar(50) not null,
+    UNIQUE (usr_name), 
+    UNIQUE (usr_email) 
 ) engine=innodb character set utf8 collate utf8_unicode_ci;
 
 create table t_comment (
