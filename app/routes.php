@@ -37,7 +37,7 @@ $app->get('/admin/user/{id}/delete', "projet4\Controller\AdminController::delete
 // API : get all episodes
 $app->get('/api/episodes', "projet4\Controller\ApiController::getEpisodesAction")->bind('api_episodes');
 // API : get an episode
-$app->get('/api/episode/{id}', "projet4\Controller\ApiController::geteEpisodeAction")->bind('api_episode');
+$app->get('/api/episode/{id}', "projet4\Controller\ApiController::getEpisodeAction")->bind('api_episode');
 // API : create an episode
 $app->post('/api/episode', "projet4\Controller\ApiController::addEpisodeAction")->bind('api_episode_add');
 // API : remove an episode
